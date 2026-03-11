@@ -1,0 +1,38 @@
+services:
+  - type: worker
+    name: nexus-autoforward
+    runtime: python
+    region: oregon
+    plan: free
+#   plan: starter
+    branch: main
+#   branch: master
+
+    buildCommand: pip install -r requirements.txt
+    startCommand: python ignite.py
+
+    autoDeploy: true
+#   autoDeploy: false
+
+# set manually in Render dashboard
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: LOG_CHANNEL
+        sync: false
+      - key: RATE_LIMIT
+        value: "20"
+      - key: WORKERS
+        value: "4"
+      - key: FORCE_JOIN
+        value: ""
+      - key: PYTHON_VERSION
+        value: "3.11.0"

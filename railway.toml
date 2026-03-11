@@ -1,0 +1,11 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "python ignite.py"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[environments.production]
+# Set these in Railway Dashboard → Variables tab
+# API_ID, API_HASH, BOT_TOKEN, OWNER_ID, MONGO_URI, LOG_CHANNEL
